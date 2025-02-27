@@ -14,3 +14,13 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.code})"
+
+
+class StockMovement(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    movement_type = models.CharField(max_length=10, choices=[('IN', 'Stock In'), ('OUT', 'Stock Out')])
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product} - {self.movement_type} - {self.quantity}"

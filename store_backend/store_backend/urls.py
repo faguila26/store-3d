@@ -16,11 +16,12 @@ Including another URLconf
 """
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from inventory.views import ShelfViewSet, ProductViewSet  
+from inventory.views import ShelfViewSet, ProductViewSet, StockMovementViewSet  
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'shelves', ShelfViewSet)
+router.register(r'stock-movements', StockMovementViewSet)
 
 urlpatterns = [
     # Aquí incluimos el router en lugar de la vista adicional
